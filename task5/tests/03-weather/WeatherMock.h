@@ -7,8 +7,10 @@
 #include <gmock/gmock.h>
 #include <Weather.h>
 
-class WeatherMock : public Weather {
+class WeatherMockGood : public Weather {
+    cpr::Response Get(const std::string& city);
 };
 
-
-
+class WeatherMockBad : public Weather {
+    cpr::Response Get(const std::string& city);
+};
