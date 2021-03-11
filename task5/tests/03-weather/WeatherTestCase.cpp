@@ -5,17 +5,16 @@
 #include "WeatherTestCase.h"
 #include "WeatherMock.h"
 
-const std::string kApiKey = "...";
 
 TEST_F(WeatherTestCase, testGetDifferenceStringGood) {
-    Weather w;
-    w.SetApiKey(kApiKey);
+    WeatherMockGood w;
+    w.SetApiKey("");
 
     ASSERT_NO_THROW(w.GetDifferenceString("warsaw", "london"));
+    ASSERT_NO_THROW(w.GetDifferenceString("london", "warsaw"));
 }
 
 TEST_F(WeatherTestCase, testGetGetDifferenceStringbad) {
-    Weather w;
-    w.SetApiKey(kApiKey);
+    WeatherMockBad w;
     ASSERT_THROW(w.GetDifferenceString("asdf", "fdsa"), std::invalid_argument);
 }
