@@ -6,11 +6,9 @@
 
 #include <gmock/gmock.h>
 #include <Weather.h>
+#include "cpr/cpr.h"
 
-class WeatherMockGood : public Weather {
-    cpr::Response Get(const std::string& city);
-};
-
-class WeatherMockBad : public Weather {
-    cpr::Response Get(const std::string& city);
+class WeatherMock : public Weather {
+public:
+    MOCK_METHOD(cpr::Response, Get, (const std::string& city), (override));
 };
